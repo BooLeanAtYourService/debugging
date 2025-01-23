@@ -1,94 +1,45 @@
 <!DOCTYPE html>
-
-<html lang="en">
-
-<head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=display-with, initial-scale=1.0">
-        <title> 000</title>
-        <style>
-          *{
-  background-color: black;
-}
-
-
-#myVideo,.myvideo {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: -1;
-  }
-
-  #btnPlay {
-    background: transparent;
-    border: none;
-    color: black;
-    position: fixed;
-    padding: 15px 32px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    text-decoration: none;
-    font-size: 14px;
-    margin: 4px 2px;
-    cursor: pointer;
-    font-family: "Times-New-Roman";
-    border-radius: 20px;
-
-  }
-  
-  
-  header ul{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  header ul li{
-    display: flex;
-    margin-right: 20px;
-  }
-
-  header ul li a{
-    text-decoration: none;
-    color: #000000;
-    border-radius: 20px;
-    padding: 6px 15px;
-  }
-  header ul li a:hover, header ul li a.active {
-    background: #c01b1b;
-    color: #000000;
-  }
-
-        </style>
-    </head>
+<htmml lang="en">
 
     <body>
-        <div class="myvideo">
-            
-            <video id="myVideo">
-                <source src="9259ac00-7ab6-4a9b-a68c-70050444d6a7.mp4" type="video/mp4">
-              </video>
-        <button id="btnPlay" type="button">PLAY</button>
-    </div>
-      <header>
-        <nav>
-            <ul>
-
-                <li><a href="index.html">HOME</a></li>
-                <li><a href="stream.html" class="active">STREAM</a></li>
-                <li><a href="videos.html">VIDEOS</a></li>
-                <li><a href="testing.html">TESTING</a></li>
-              </ul>
-        </nav>
-        
-      </header>
-      
+    
+            <div class="myvideo">
+                
+                <video  id="myVideo">
+                    <source src="coolfirst2hours.mp4" type = "video/mp4">
+                </video>
+                  
+            <button id="btnPlay">PLAY</button>
+        </div>
+        <!--Popup container-->
+        <div id="unmute-popup" class="popup">
+          <div class="popup-content">
+            <h2>Unmute Sound?</h2>
+            <p>Do you want to umute the sound?</p>
+            <button id="unmute-yes">Yes</button>
+            <button id="unmute-no">No</button>
+          </div>
+        </div>
+    
     </body>
-    <script src="script.js"></script>
+    <script>
+    const videoElem = document.getElementById('myVideo');
+    const playPauseButton = document.getElementById('btnPlay');
+
+    
+    playPauseButton.addEventListener('click', () => {
+      if (videoElem.paused) {
+        videoElem.muted = false;
+        videoElem.play();
+        playPauseButton.textContent = 'Pause';
+        playPauseButton.classList.add('transparent');
+      } else {
+        videoElem.pause();
+        playPauseButton.textContent = 'Play';
+        playPauseButton.classList.remove('transparent');
+        videoElem.muted = !videoElem.muted;
+      }
+    });
+  
+    </script>
 </html>

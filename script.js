@@ -1,8 +1,20 @@
-document.addEventListener('DOMContentLoaded', () => {
+
     const videoElem = document.getElementById('myVideo');
-    const playButton = document.getElementById('playVid');
+    const playPauseButton = document.getElementById('btnPlay');
+
     
-    playButton.addEventListener('click', () => {
+    playPauseButton.addEventListener('click', () => {
+      if (videoElem.paused) {
+        videoElem.muted = false;
         videoElem.play();
+        playPauseButton.textContent = 'Pause';
+        playPauseButton.classList.add('transparent');
+      } else {
+        videoElem.pause();
+        playPauseButton.textContent = 'Play';
+        playPauseButton.classList.remove('transparent');
+        videoElem.muted = !videoElem.muted;
+      }
     });
-    });
+  
+    
